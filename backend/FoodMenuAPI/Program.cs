@@ -1,22 +1,30 @@
-
 using FoodMenuAPI.Data;
+using FoodMenuAPI.Repositories;
+using FoodMenuAPI.Repositories.Interfaces;
+using FoodMenuAPI.Services;
+using FoodMenuAPI.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register services
+// Register Controllers
 builder.Services.AddControllers();
+
 builder.Services.AddOpenApi();
 
-// Register ApplicationDbContext using Dependency Injection
+// Database Connection
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Build the application
+// Register Repository
+builder.Services.AddScoped<IFoodItemRepository, FoodItemRepository>();
+
+// Register Service
+builder.Services.AddScoped<IFoodItemService, FoodItemService>();
+
 var app = builder.Build();
 
-// Configure HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
