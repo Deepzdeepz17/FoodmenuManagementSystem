@@ -37,6 +37,7 @@ namespace FoodMenuAPI.Controllers
         }
 
         // POST: api/FoodItems
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Add(FoodItem foodItem)
         {
