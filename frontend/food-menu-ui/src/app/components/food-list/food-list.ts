@@ -3,12 +3,13 @@ import {
   OnInit,
   ChangeDetectorRef
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { Food } from '../../services/food';
 
 @Component({
   selector: 'app-food-list',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './food-list.html',
   styleUrl: './food-list.css'
 })
@@ -44,5 +45,5 @@ export class FoodList implements OnInit {
     });
 
   }
-  
+
 }

@@ -1,0 +1,101 @@
+
+<div class="dashboard-container">
+
+  <header class="dashboard-header">
+    <h1>Food Menu Admin Dashboard</h1>
+    <button (click)="logout()">Logout</button>
+  </header>
+
+  <div class="dashboard-content">
+
+    <h2>{{ editingId ? 'Edit Food Item' : 'Add Food Item' }}</h2>
+
+    <form (ngSubmit)="editingId ? updateFood() : addFood()">
+
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="newFood.name"
+        placeholder="Food Name"
+        required
+      />
+
+      <input
+        type="text"
+        name="category"
+        [(ngModel)]="newFood.category"
+        placeholder="Category"
+        required
+      />
+
+      <textarea
+        name="description"
+        [(ngModel)]="newFood.description"
+        placeholder="Description">
+      </textarea>
+
+      <input
+        type="number"
+        name="price"
+        [(ngModel)]="newFood.price"
+        placeholder="Price"
+        min="0.01"
+        step="0.01"
+        required
+      />
+
+      <label>
+        <input
+          type="checkbox"
+          name="isAvailable"
+          [(ngModel)]="newFood.isAvailable"
+        />
+        Available
+      </label>
+
+      <button type="submit">
+        {{ editingId ? 'Update Food' : 'Add Food' }}
+      </button>
+
+      @if (editingId !== null) {
+        <button type="button" (click)="resetForm()">
+          Cancel Edit
+        </button>
+      }
+
+    </form>
+
+    <h2>Food Items</h2>
+
+    <div class="food-grid">
+
+      @for (food of foodItems; track food.id) {
+
+        <div class="food-card">
+
+          <h3>{{ food.name }}</h3>
+          <p>Category: {{ food.category }}</p>
+          <p>{{ food.description }}</p>
+          <p>Price: ₹{{ food.price }}</p>
+
+          <p>
+            {{ food.isAvailable ? 'Available' : 'Not Available' }}
+          </p>
+
+          <button type="button" (click)="editFood(food)">
+            Edit
+          </button>
+
+          <button type="button" (click)="deleteFood(food.id)">
+            Delete
+          </button>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>

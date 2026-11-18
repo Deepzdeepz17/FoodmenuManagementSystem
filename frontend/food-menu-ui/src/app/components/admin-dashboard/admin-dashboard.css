@@ -1,0 +1,121 @@
+
+.dashboard-container {
+  min-height: 100vh;
+  background: #f5f6fa;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-header {
+  background: #e65100;
+  color: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.dashboard-content {
+  padding: 30px 40px;
+}
+
+.dashboard-content h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin-bottom: 35px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+form label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #e65100;
+  color: white;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+button:hover {
+  background: #bf360c;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.food-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.food-card h3 {
+  color: #e65100;
+  margin-top: 0;
+}
+
+.food-card p {
+  color: #555;
+  line-height: 1.5;
+}
+
+.dashboard-header button {
+  background: white;
+  color: #e65100;
+  font-weight: bold;
+}
+
+.dashboard-header button:hover {
+  background: #ffe0b2;
+}
+
+@media (max-width: 600px) {
+  .dashboard-header {
+    padding: 18px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .dashboard-content {
+    padding: 20px;
+  }
+}

@@ -14,4 +14,15 @@ export class Food {
   getAllFoods(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+   addFood(food: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, food);
+  }
+  updateFood(id: number, food: any): Observable<any> {
+  return this.http.put<any>(`${this.apiUrl}/${id}`, food);
+}
+
+// Delete food item
+deleteFood(id: number): Observable<any> {
+  return this.http.delete<any>(`${this.apiUrl}/${id}`);
+}
 }
